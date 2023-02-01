@@ -299,6 +299,7 @@ section {
 button,
 html [type="button"] {
     cursor: pointer;
+    color: #4e54c8
 }
 
 textarea {
