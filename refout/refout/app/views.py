@@ -61,3 +61,9 @@ def signin(request):
 
 def notifications(request):
     return render(request, 'notifications.html')
+
+def profile(request):
+    return render(request, 'profile.html')
+
+def post(request):
+    return render(request, 'post.html')
