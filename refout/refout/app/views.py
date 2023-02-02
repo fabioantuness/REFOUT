@@ -47,8 +47,8 @@ def signup(request):
         return render(request, 'signup.html') 
 
 def signin(request):
-
-     if request.method == 'POST':
+    return render(request, 'signin.html')
+    '''if request.method == 'POST':
         username= request.POST['username']
         password= request.POST['password']
         user=auth.authentificate(username=username,password=password)
@@ -57,5 +57,7 @@ def signin(request):
             return redirect('/')
         else:
             messages.info(request,'Invalid password or email')
-    else:
-        return render(request, 'signin.html')
+    else:'''
+
+def notifications(request):
+    return render(request, 'notifications.html')
