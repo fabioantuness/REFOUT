@@ -28,10 +28,9 @@ class Post(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
-    nome = models.CharField(max_length=50)
     imagem = models.ImageField(upload_to='profile_images', default='blank-profile-picutre.jpg')
-    seguidores = models.IntegerField()
-    post = models.ForeignKey('Post', models.DO_NOTHING)
+    seguidores = models.IntegerField(default=0)
+    post = models.ForeignKey('Post', models.DO_NOTHING, null=True, blank=True, default = None)
 
     class Meta:
         db_table = 'profile'
