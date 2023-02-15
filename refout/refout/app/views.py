@@ -3,7 +3,11 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import HttpResponse
 from .models import Profile
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+
 # Create your views here.
+@login_required
 def index(request):
     return render(request, 'index.html')
 
@@ -47,17 +51,18 @@ def signup(request):
         return render(request, 'signup.html') 
 
 def signin(request):
-    return render(request, 'signin.html')
-    '''if request.method == 'POST':
+
+    if request.method == 'POST':
         username= request.POST['username']
         password= request.POST['password']
-        user=auth.authentificate(username=username,password=password)
+        user=auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request, user)
             return redirect('/')
         else:
             messages.info(request,'Invalid password or email')
-    else:'''
+    else:
+        return render(request, 'signin.html')
 
 def notifications(request):
     return render(request, 'notifications.html')
