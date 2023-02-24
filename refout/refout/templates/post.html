@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,11 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 <body>
-    
+    <form>
+    <input type="file" name="file" id="file" required="required"/>
+    <input type="text" name="description" placeholder="Description"/>
+    <input type="text" name="referencia1"  placeholder="Primeira referencia" required="required"/>
+    <input type="text" name="referencia2"   placeholder="Segunda referencia" required="required"/>
+</form>
 </body>
 </html>
