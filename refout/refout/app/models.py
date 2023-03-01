@@ -6,26 +6,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
-
-class Comments(models.Model):
-    comment_date = models.DateField()
-    comment_text = models.CharField(max_length=200)
-    post = models.ForeignKey('Post', models.DO_NOTHING)
-
-    class Meta:
-        db_table = 'comments'
-
-class Post(models.Model):
-    post_date = models.DateField()
-    profile_id = models.IntegerField(unique=True)
-    likes = models.IntegerField()
-    foto = models.CharField(max_length=50)
-    ref = models.ForeignKey('Referencia', models.DO_NOTHING)
-
-    class Meta:
-        db_table = 'Post'
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
     imagem = models.ImageField(upload_to='profile_images', default='blank-profile-picutre.jpg')
@@ -34,6 +14,27 @@ class Profile(models.Model):
 
     class Meta:
         db_table = 'profile'
+
+
+class Comments(models.Model):
+    comment_date = models.DateField()
+    comment_text = models.CharField(max_length=200)
+    post = models.ForeignKey('Post', models.DO_NOTHING)
+#    profile = models.ForeignKey('Profile', models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'comments'
+
+class Post(models.Model):
+    post_date = models.DateField()
+    likes = models.IntegerField()
+    foto = models.CharField(max_length=50)
+    ref = models.ForeignKey('Referencia', models.DO_NOTHING)
+#   profilio = models.ForeignKey('Profile', on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'Post'
+
 
 class Referencia(models.Model):
     post_id = models.IntegerField()
