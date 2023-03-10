@@ -27,9 +27,8 @@ class Comments(models.Model):
 
 class Post(models.Model):
     post_date = models.DateField()
-    likes = models.IntegerField()
+    likes = models.IntegerField(default=0)
     foto = models.CharField(max_length=50)
-    ref = models.ForeignKey('Referencia', models.DO_NOTHING)
 #   profilio = models.ForeignKey('Profile', on_delete=models.CASCADE)
 
     class Meta:
@@ -37,7 +36,7 @@ class Post(models.Model):
 
 
 class Referencia(models.Model):
-    post_id = models.IntegerField()
+    post_id = models.ForeignKey('Post', models.DO_NOTHING)
     ref_descricao = models.CharField(max_length=25)
 
     class Meta:

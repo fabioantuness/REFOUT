@@ -71,4 +71,9 @@ def profile(request):
     return render(request, 'profile.html')
 
 def post(request):
-    return render(request, 'post.html')
+    if request.method == 'POST':
+        image = request.POST['image']
+        referencia = request.POST['referencia']
+        
+    else:
+        return render(request, 'post.html')

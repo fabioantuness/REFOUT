@@ -1,82 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Upload Page</title>
     <style>
-      /* Style for the upload button */
-      .upload-btn {
-        border: none;
-        color: white;
-        padding: 14px 28px;
-        cursor: pointer;
-        background-color: #4CAF50;
-        font-size: 16px;
-        border-radius: 20px;
-      }
-
-      /* Style for the uploaded image */
-      .uploaded-img {
-        max-width: 300px;
-        max-height: 300px;
-      }
-
-      /* Style for the text fields */
-      .text-field {
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        margin: 5px 0;
-        width: 100%;
-      }
-
-      /* Style for the add button */
-      .add-btn {
-        border: none;
-        color: white;
-        padding: 8px 16px;
-        cursor: pointer;
-        background-color: #4CAF50;
-        font-size: 16px;
-        border-radius: 20px;
-      }
+        /* Style for the upload button */
+        
+        .upload-btn {
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+        /* Style for the uploaded image */
+        
+        .uploaded-img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+        /* Style for the text fields */
+        
+        .text-field {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            width: 100%;
+        }
+        /* Style for the add button */
+        
+        .add-btn {
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            font-size: 16px;
+            border-radius: 20px;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Upload button and image preview -->
-    <form>
-      <input type="file" id="upload-input" style="display:none" onchange="previewImage(this)">
-      <button type="button" class="upload-btn" onclick="document.getElementById('upload-input').click()">Upload</button>
-      <br>
-      <img id="uploaded-img" class="uploaded-img" src="#" alt="Uploaded Image">
+    <form method="POST" action="">
+        <input type="file" id="image" name="image" style="display:none" onchange="previewImage(this)">
+        <button type="button" class="upload-btn" onclick="document.getElementById('image').click()">Upload</button>
+        <br>
+        <img id="uploaded-img" class="uploaded-img" src="#" alt="Uploaded Image">
+
+        <div id="text-fields">
+            <input type="text" class="text-field" name="referencia" placeholder="Referencia">
+            <br>3
+            <input type="text" class="text-field" name="referencia" placeholder="Referencia" placeholder="Enter text here">
+            <br>
+        </div>
+        <button type="button" class="add-btn" onclick="addTextField()">Add field</button>
+        <button type="submit" class="mtr-btn signup"><span>Confirm</span></button>
     </form>
 
     <!-- Text fields and add button -->
-    <div id="text-fields">
-      <input type="text" class="text-field" placeholder="Enter text here">
-      <br>
-      <input type="text" class="text-field" placeholder="Enter text here">
-      <br>
-    </div>
-    <button type="button" class="add-btn" onclick="addTextField()">Add field</button>
+
 
     <!-- Script for previewing the uploaded image and adding text fields -->
     <script>
-      function previewImage(input) {
-        var imgElement = document.getElementById('uploaded-img');
-        imgElement.style.display = "block";
-        imgElement.src = URL.createObjectURL(input.files[0]);
-      }
+        function previewImage(input) {
+            var imgElement = document.getElementById('uploaded-img');
+            imgElement.style.display = "block";
+            imgElement.src = URL.createObjectURL(input.files[0]);
+        }
 
-      function addTextField() {
-        var textFieldDiv = document.getElementById('text-fields');
-        var newTextField = document.createElement('input');
-        newTextField.type = "text";
-        newTextField.className = "text-field";
-        newTextField.placeholder = "Enter text here";
-        textFieldDiv.appendChild(newTextField);
-        textFieldDiv.appendChild(document.createElement('br'));
-      }
+        function addTextField() {
+            var textFieldDiv = document.getElementById('text-fields');
+            var newTextField = document.createElement('input');
+            newTextField.type = "text";
+            newTextField.className = "text-field";
+            newTextField.name = "referencia";
+            newTextField.placeholder = "Referencia";
+            textFieldDiv.appendChild(newTextField);
+            textFieldDiv.appendChild(document.createElement('br'));
+        }
     </script>
-  </body>
+</body>
+
 </html>
